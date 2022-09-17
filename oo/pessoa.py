@@ -17,3 +17,7 @@ if __name__=='__main__':
     print(luka.idade)
     for filho in luka.filhos:
         print(filho.nome)
+    luka.sobrenome = 'Doncic'               # Possível adicionar atributos dinamicamente
+    del luka.filhos                         # Possível remover atributos dinamicamente
+    print(luka.__dict__)
+    print(morant.__dict__)
