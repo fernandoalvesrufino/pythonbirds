@@ -9,6 +9,14 @@ class Pessoa:
     def cumprimentar(self):
         return f'Olá {id(self)}'
 
+    @staticmethod                                     # decorator
+    def metodo_estatico():                            # Funciona como uma função atrelada a classe e independe do objeto
+        return 42                                     # não precisa receber atributo
+
+    @classmethod
+    def nome_e_atributos_de_classe(cls):              # Utilizado quando quero acessar dados da própria classe
+        return f'{cls} - olhos {cls.olhos}'
+
 if __name__=='__main__':
     morant = Pessoa(nome='Morant')
     luka = Pessoa(morant, nome='Luka')
@@ -31,3 +39,5 @@ if __name__=='__main__':
     print(morant.olhos)                     # a não ser que eu insira o atributo no objeto
     print(luka.olhos)
     print(id(Pessoa.olhos), id(morant.olhos), id(luka.olhos))
+    print(Pessoa.metodo_estatico(), morant.metodo_estatico())
+    print(Pessoa.nome_e_atributos_de_classe(), morant.nome_e_atributos_de_classe())
