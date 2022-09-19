@@ -17,8 +17,13 @@ class Pessoa:
     def nome_e_atributos_de_classe(cls):              # Utilizado quando quero acessar dados da própria classe
         return f'{cls} - olhos {cls.olhos}'
 
-if __name__=='__main__':
-    morant = Pessoa(nome='Morant')
+
+class Homem(Pessoa):
+    pass
+
+
+if __name__ == '__main__':
+    morant = Homem(nome='Morant')
     luka = Pessoa(morant, nome='Luka')
     print(Pessoa.cumprimentar(luka))
     print(id(luka))
@@ -41,3 +46,10 @@ if __name__=='__main__':
     print(id(Pessoa.olhos), id(morant.olhos), id(luka.olhos))
     print(Pessoa.metodo_estatico(), morant.metodo_estatico())
     print(Pessoa.nome_e_atributos_de_classe(), morant.nome_e_atributos_de_classe())
+    pessoa = Pessoa('Anonimo')
+    print(isinstance(pessoa, Pessoa))
+    print(isinstance(pessoa, Homem))
+    print(isinstance(morant, Pessoa))
+    print(isinstance(morant, Homem))
+
+
