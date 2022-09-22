@@ -19,12 +19,12 @@ class Pessoa:
 
 
 class Homem(Pessoa):
-    def cumprimentar(self):
+    def cumprimentar(self):                           # Sobrescrita de método
         cumprimentar_classe_pai = super().cumprimentar()
         return f'{cumprimentar_classe_pai}. Aperto de mão'
 
 class Mutante(Pessoa):
-    olhos = 3                         # Sobrescrita de atributo de classe
+    olhos = 3                                         # Sobrescrita de atributo de classe
 
 
 if __name__ == '__main__':
