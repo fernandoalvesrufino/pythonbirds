@@ -21,9 +21,12 @@ class Pessoa:
 class Homem(Pessoa):
     pass
 
+class Mutante(Pessoa):
+    olhos = 3                         # Sobrescrita de atributo de classe
+
 
 if __name__ == '__main__':
-    morant = Homem(nome='Morant')
+    morant = Mutante(nome='Morant')
     luka = Pessoa(morant, nome='Luka')
     print(Pessoa.cumprimentar(luka))
     print(id(luka))
@@ -39,7 +42,6 @@ if __name__ == '__main__':
     del morant.olhos
     print(luka.__dict__)                    # Mostra quais são os atributos de instância de um objeto
     print(morant.__dict__)                  # O __dict__ não apresenta os atributos de classe, apenas o de instância
-    Pessoa.olhos = 3
     print(Pessoa.olhos)
     print(morant.olhos)                     # a não ser que eu insira o atributo no objeto
     print(luka.olhos)
@@ -51,5 +53,6 @@ if __name__ == '__main__':
     print(isinstance(pessoa, Homem))
     print(isinstance(morant, Pessoa))
     print(isinstance(morant, Homem))
+    print(morant.olhos)
 
 
