@@ -7,7 +7,7 @@ class Pessoa:
         self.filhos = list(filhos)
 
     def cumprimentar(self):
-        return f'Olá {id(self)}'
+        return f'Olá, meu nome é {self.nome}'
 
     @staticmethod                                     # decorator
     def metodo_estatico():                            # Funciona como uma função atrelada a classe e independe do objeto
@@ -19,7 +19,9 @@ class Pessoa:
 
 
 class Homem(Pessoa):
-    pass
+    def cumprimentar(self):
+        cumprimentar_classe_pai = super().cumprimentar()
+        return f'{cumprimentar_classe_pai}. Aperto de mão'
 
 class Mutante(Pessoa):
     olhos = 3                         # Sobrescrita de atributo de classe
@@ -27,7 +29,7 @@ class Mutante(Pessoa):
 
 if __name__ == '__main__':
     morant = Mutante(nome='Morant')
-    luka = Pessoa(morant, nome='Luka')
+    luka = Homem(morant, nome='Luka')
     print(Pessoa.cumprimentar(luka))
     print(id(luka))
     print(id(morant))
@@ -37,7 +39,7 @@ if __name__ == '__main__':
     for filho in luka.filhos:
         print(filho.nome)
     luka.sobrenome = 'Doncic'               # Possível adicionar atributos dinamicamente
-    del luka.filhos                         # Possível remover atributos dinamicamente
+    del luka.filhos                        # Possível remover atributos dinamicamente
     morant.olhos = 1
     del morant.olhos
     print(luka.__dict__)                    # Mostra quais são os atributos de instância de um objeto
@@ -54,5 +56,7 @@ if __name__ == '__main__':
     print(isinstance(morant, Pessoa))
     print(isinstance(morant, Homem))
     print(morant.olhos)
+    print(luka.cumprimentar())
+    print(morant.cumprimentar())
 
 
